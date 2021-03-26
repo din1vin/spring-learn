@@ -1,0 +1,50 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="dog" class="com.dinl.spring.pojo.Dog"/>
+    <bean id="cat" class="com.dinl.spring.pojo.Cat"/>
+    <bean id="person1" class="com.dinl.spring.pojo.User">
+        <constructor-arg index="0" ref="dog"/>
+        <constructor-arg index="1" ref="cat"/>
+    </bean>
+
+    <bean id="person2" class="com.dinl.spring.pojo.User" p:dog-ref="dog" p:cat-ref="cat"/>
+    <bean id="person3" class="com.dinl.spring.pojo.User" c:cat-ref="cat" c:dog-ref="dog"/>
+
+    <bean id="address" class="com.dinl.spring.pojo.Address">
+        <property name="province" value="安徽"/>
+        <property name="city" value="安庆"/>
+        <property name="part" value="怀宁"/>
+    </bean>
+
+    <bean id="student" class="com.dinl.spring.pojo.Student">
+        <property name="address" ref="address"/>
+        <property name="name" value="丁亮"/>
+        <property name="books">
+            <list>
+                <value>三国演义</value>
+                <value>水浒传</value>
+                <value>西游记</value>
+                <value>红楼梦</value>
+            </list>
+        </property>
+        <property name="score">
+            <map>
+                <entry key="语文" value="100"/>
+                <entry key="数学" value="120"/>
+                <entry key="英语" value="120"/>
+            </map>
+        </property>
+        <property name="age" value="24"/>
+        <property name="hobby">
+            <set>
+                <value>篮球</value>
+                <value>足球</value>
+                <value>篮球</value>
+            </set>
+        </property>
+    </bean>
+</beans>
